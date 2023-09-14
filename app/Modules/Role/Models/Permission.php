@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Modules\Request\Models;
+namespace App\Moduls\Role\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Request extends Model
+class Permission extends Model
 {
     use HasFactory;
 }
