@@ -6,8 +6,11 @@ use App\Modules\User\DTOs\LoginDTO;
 use App\Modules\User\DTOs\RegisterDTO;
 use App\Modules\User\Interfaces\AuthServiceInterface;
 use App\Modules\User\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-class AuthService  implements AuthServiceInterface
+use PhpParser\Node\Expr\Cast\Object_;
+
+class AuthService implements AuthServiceInterface
 {
     public function register(RegisterDTO $data): User
     {
@@ -20,11 +23,26 @@ class AuthService  implements AuthServiceInterface
         return $user;
     }
 
-    public function login(LoginDTO $data): User
+    public function login(LoginDTO $data): ?array
     {
-        return User::query()
-        ->where('email', $data->email)
-        ->where('password', Hash::make($data->password))
-        ->first();
+        if (Auth::attempt(['email' => $data->email, 'password' => $data->password], true)) {
+            $user = Auth::user();
+            $token = $user->createToken("API TOKEN")->plainTextToken;
+
+            return [
+                'user' => $user,
+                'access_token' => $token,
+            ];
+        }
+
+        return null;
     }
+
 }
+
+
+
+
+
+
+

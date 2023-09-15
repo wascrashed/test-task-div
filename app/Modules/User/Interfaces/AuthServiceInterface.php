@@ -9,5 +9,6 @@ use App\Modules\User\Models\User;
 interface AuthServiceInterface
 {
     public function register(RegisterDTO $data): User;
-    public function login(LoginDTO $data): User;
+
+    public function login(LoginDTO $data): ?array;
 }

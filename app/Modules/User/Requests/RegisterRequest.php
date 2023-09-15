@@ -22,7 +22,7 @@ class RegisterRequest extends FormRequest
             'password' => 'required|string|',
         ];
     }
-    public function toRegisterDTO(): RegisterDTO
+    public function toDTO(): RegisterDTO
     {
         return new RegisterDTO(
             $this->input('name'),
