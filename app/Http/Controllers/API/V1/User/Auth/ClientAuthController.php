@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API\V1\Admin\Auth;
+namespace App\Http\Controllers\API\V1\User\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Responses\ErrorResponse;
@@ -11,9 +11,9 @@ use App\Modules\User\Interfaces\AuthServiceInterface;
 use App\Modules\User\Requests\RegisterRequest;
 use App\Modules\User\Resources\LoginResource;
 use App\Modules\User\Resources\UserResource;
-use http\Client\Request;
+use Illuminate\Http\Request;
 
-class AuthController extends Controller
+class ClientAuthController extends Controller
 {
     private $authService;
 
