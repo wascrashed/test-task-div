@@ -18,20 +18,6 @@ class Request extends Model
         'comment',
     ];
 
-    public function scopeFilterByStatus(Builder $query)
-    {
-        if ($query->status) {
-            return $query->where('status', $query->status);
-        }
-        if ($query->startDate) {
-            $query->whereDate('created_at', '>=', $query->startDate);
-        }
 
-        if ($query->endDate) {
-            $query->whereDate('created_at', '<=', $query->endDate);
-        }
-
-        return $query;
-    }
 
 }

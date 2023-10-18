@@ -170,6 +170,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Modules\User\Providers\BindingServiceProvider::class,
         App\Modules\Requests\Providers\BindingServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
     ])->toArray(),
 
     /*

@@ -61,8 +61,6 @@ class AdminAuthController extends Controller
     {
 
         $admin = $this->authService->register($request->toDTO());
-        $admin->assignRole('admin');
-        $admin->givePermissionTo('edit request');
 
         return new SuccessResponse
         ([

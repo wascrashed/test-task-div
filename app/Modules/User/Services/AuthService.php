@@ -19,7 +19,8 @@ class AuthService implements AuthServiceInterface
             'email' => $data->email,
             'password' => Hash::make($data->password),
         ]);
-
+        $user->assignRole('Admin');
+        $user->givePermissionTo('edit request');
         return $user;
     }
 
